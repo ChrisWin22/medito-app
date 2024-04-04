@@ -37,16 +37,6 @@ platform :android do
   lane :beta do
     set_environment_values(ENV["STAGING_URL"], ENV["STAGING_INIT_TOKEN"], ENV["SENTRY_DSN"])
     sh "flutter build appbundle --no-tree-shake-icons --obfuscate"
-    upload_to_play_store(
-      track: 'beta',
-      aab: '../build/app/outputs/bundle/release/app-release.aab',
-      json_key_data: ENV['PLAY_STORE_CONFIG_JSON'],
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true,
-      skip_upload_changelogs: true,
-      release_status: "draft",
-    )
   end
 
   desc "Promote beta track to prod"
