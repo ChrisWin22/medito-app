@@ -36,7 +36,6 @@ platform :android do
   desc "Submit a new beta build to Google Play"
   lane :beta do
     set_environment_values(ENV["STAGING_URL"], ENV["STAGING_INIT_TOKEN"], ENV["SENTRY_DSN"])
-    sh "flutter build appbundle --no-tree-shake-icons --obfuscate"
   end
 
   desc "Promote beta track to prod"
